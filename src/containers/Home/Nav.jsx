@@ -26,8 +26,9 @@ class Header extends React.Component {
     const isMode = props.isMode;
     delete props.isMode;
     const navData = { menu1: '訓練', menu2: '飲食', menu3: 'FAQ', menu4: '頻道推薦' };;
+    const linkDirection = ['/training', '/food', '/qAndA', 'playList']
     const navChildren = Object.keys(navData)
-      .map((key, i) => (<Item key={i}><Link to="/training" className="headerLink">{navData[key]}</Link></Item>));
+      .map((key, i) => (<Item key={i}><Link to={linkDirection[i]} className="headerLink">{navData[key]}</Link></Item>));
     return (<TweenOne
       component="header"
       animation={{ opacity: 0, type: 'from' }}
@@ -38,7 +39,7 @@ class Header extends React.Component {
         animation={{ x: -30, type: 'from', ease: 'easeOutQuad' }}
         id={`${this.props.id}-logo`}
       >
-        <h3 style={{ color: 'white' }}>健身小教室</h3>
+        <h3><Link to="/home" style={{ color: '#ff8585', textDecoration: 'none' }}>健身小教室</Link></h3>
       </TweenOne>
       {isMode
         ? (<div
@@ -73,7 +74,7 @@ class Header extends React.Component {
           animation={{ x: 30, type: 'from', ease: 'easeOutQuad' }}
         >
         <Menu
-          mode="horizontal" defaultSelectedKeys={['0']}
+          mode="horizontal"
           id={`${this.props.id}-menu`}
           style={{ listStyle: 'none', cursor: 'pointer' }}
         >

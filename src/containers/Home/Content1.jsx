@@ -3,6 +3,8 @@ import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 
+import warning from './../../less/warning.png';
+
 class Content extends React.Component {
 
   static defaultProps = {
@@ -80,6 +82,11 @@ class Content extends React.Component {
             <ul key="ul">
               {children}
             </ul>
+            <div style={{ paddingLeft: '10px', paddingTop: '20px', textAlign: 'center'}}>
+              <img alt="" src={warning} width="7%" />
+              <h2>此網站含有大量youtube影片，請斟酌使用</h2>
+              <h3>P.S. 最佳觀賞尺寸為全螢幕 1440 x 732 px</h3>
+            </div>
           </QueueAnim>
         </OverPack>
       </div>

@@ -14,27 +14,30 @@ class Traning extends React.Component {
       const tabmethodType = [];
       console.log(data, key);
       _.map(data.children, (methodType) => {
-        tabmethodType.push(<h2 key={"methodType" + methodType.englishName}>{`${methodType.title}-${methodType.englishName}`}</h2>);
+        tabmethodType.push(<h1 key={"methodType" + methodType.englishName}>{`${methodType.title}-${methodType.englishName}`}</h1>);
         _.map(methodType.methods, (methods, methodsKey) => {
-          console.log(methods.url + '?rel=0&amp;showinfo=0')
           tabmethodType.push(
             <Row key={methodType.englishName + methodsKey}>
-              <Col span={8}>
-                {`${methods.title}-${methods.englishName}`}
+              <Col xs={0} sm={6} md={8} lg={8} xl={8}>
+                <h2>{methods.title}-{methods.englishName}</h2>
+                <img alt="" height={250} width='80%' src={methods.motionImgUrl} />
+                <br />圖片來源:{methods.motionImgUrl}
               </Col>
-              <Col span={16}>
+              <Col xs={0} sm={0} md={2} lg={4} xl={4} />
+              <Col xs={0} sm={18} md={14} lg={12} xl={12}>
               { methods.url === ''
                 ? <div
-                  style={{ width:"560", height:'315' }}>
+                  style={{ width:"560px", height:'315px' }}>
                   <h1>Sorry! No Video Support~</h1>
-                  <img alt width={260} src="http://0rz.tw/EjFwz" />
+                  <img alt="" width={260} src="http://0rz.tw/EjFwz" />
                   </div>
                 : <iframe
+                  title={methods+methodsKey}
                   width="560"
                   height="315"
                   src={ methods.url + '?rel=0&amp;showinfo=0' }
-                  frameborder="0"
-                  allowfullscreen
+                  frameBorder="0"
+                  allowFullScreen
                 />
               }
               </Col>
